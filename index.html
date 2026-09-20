@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tally: Expense Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1 class="brand">Tally</h1>
+    <select id="currency" class="select" aria-label="Currency"></select>
+  </header>
+
+  <section class="hero" aria-labelledby="monthLabel">
+    <div class="monthnav">
+      <button class="iconbtn" data-act="prev" aria-label="Previous month">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4.5 7 10l5.5 5.5"/></svg>
+      </button>
+      <h2 class="month" id="monthLabel"></h2>
+      <button class="iconbtn" id="nextBtn" data-act="next" aria-label="Next month">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 4.5 13 10l-5.5 5.5"/></svg>
+      </button>
+    </div>
+    <p class="fig" id="total">0</p>
+    <p class="sub" id="heroSub"></p>
+    <div class="ribbon draw" id="ribbon" role="group" aria-label="Spending by category"></div>
+    <div class="budget" id="budgetRow"></div>
+  </section>
+
+  <div class="grid">
+    <div class="col">
+      <section id="add" aria-labelledby="addH">
+        <h2 class="h" id="addH">Add expense</h2>
+        <div class="fields">
+          <div class="field full">
+            <label class="lbl" for="amount">Amount</label>
+            <div class="amountwrap">
+              <span id="sym" aria-hidden="true"></span>
+              <input id="amount" type="text" inputmode="decimal" autocomplete="off" placeholder="0" maxlength="14">
+            </div>
+          </div>
+          <div class="field">
+            <label class="lbl" for="category">Category</label>
+            <select id="category" class="in"></select>
+          </div>
+          <div class="field">
+            <label class="lbl" for="date">Date</label>
+            <input id="date" class="in" type="date">
+          </div>
+          <div class="field full">
+            <label class="lbl" for="note">Note (optional)</label>
+            <input id="note" class="in" type="text" maxlength="80" autocomplete="off" placeholder="What was it for?">
+          </div>
+          <div class="full"><button class="btn" data-act="add" style="width:100%">Add expense</button></div>
+        </div>
+        <p class="msg" id="formMsg" role="alert"></p>
+      </section>
+
+      <section id="ledger" aria-labelledby="ledgerH">
+        <div class="ledgerhead">
+          <h2 class="h" id="ledgerH">Ledger</h2>
+          <div class="tools" id="ledgerTools"></div>
+        </div>
+        <div id="ledgerBody"></div>
+      </section>
+    </div>
+
+    <div class="col">
+      <section id="breakdown" aria-labelledby="breakH">
+        <h2 class="h" id="breakH">Where it went</h2>
+        <div id="breakBody"></div>
+      </section>
+
+      <section id="daily" aria-labelledby="dailyH">
+        <h2 class="h" id="dailyH">Day by day</h2>
+        <div id="dailyBody"></div>
+      </section>
+    </div>
+  </div>
+
+  <footer>
+    <p id="storageNote"></p>
+    <p>The currency you pick sets the symbol only, so amounts are not converted.</p>
+    <button class="link" id="resetBtn" data-act="reset">Delete all data</button>
+  </footer>
+</div>
+
+<div id="toastWrap" aria-live="polite"><div id="toast" hidden></div></div>
+
+<script src="script.js"></script>
+</body>
+</html>
