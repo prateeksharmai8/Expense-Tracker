@@ -1,4 +1,4 @@
- Expense Tracker
+** Expense Tracker**
 
  is a simple and modern local expense tracker built using **HTML, CSS, JavaScript, and Python**.
 
